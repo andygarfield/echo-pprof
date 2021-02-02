@@ -8,7 +8,7 @@ A wrapper for [golang web framework echo](https://github.com/labstack/echo) to u
 First install echo-pprof to your GOPATH using `go get`:
 
 ```sh
-go get github.com/EpicStep/echo-pprof
+go get github.com/EpicStep/echo-pprof/v1
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ package main
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/EpicStep/echo-pprof"
+	"github.com/EpicStep/echo-pprof/v1"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module github.com/EpicStep/echo-pprof
+module github.com/EpicStep/echo-pprof/v1
 
 go 1.15
 
