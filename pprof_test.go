@@ -1,6 +1,7 @@
 package echopprof
 
 import (
+	"log"
 	"strings"
 	"testing"
 
@@ -32,6 +33,7 @@ func checkRouters(routers []*echo.Route, t *testing.T) {
 		}
 		name, ok := expectedRouters[router.Path]
 		if !ok {
+			log.Println(router.Path)
 			t.Errorf("missing router %s", router.Path)
 		}
 		if !strings.Contains(router.Name, name) {
@@ -40,16 +42,14 @@ func checkRouters(routers []*echo.Route, t *testing.T) {
 	}
 }
 
-// go test github.com/sevenNt/echo-pprof -v -run=TestWrap\$
 func TestWrap(t *testing.T) {
 	e := newServer()
 	Wrap(e)
 	checkRouters(e.Routes(), t)
 }
 
-// go test github.com/sevenNt/echo-pprof -v -run=TestWrapGroup\$
 func TestWrapGroup(t *testing.T) {
-	for _, prefix := range []string{"/debug"} {
+	for _, prefix := range []string{"/debug/pprof"} {
 		e := newServer()
 		g := e.Group(prefix)
 		WrapGroup(prefix, g)
